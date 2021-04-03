@@ -4,8 +4,10 @@ on:
   push:
     branches:
     - main
-    paths:
+    paths-ignore:
+    - "README.md"
     - "CHANGELOG.md"
+    - "renovate.json"
 
 env:
   INITIAL_VERSION: 0.0.1

@@ -1,6 +1,6 @@
 # Base Blueprint
 
-[![](https://img.shields.io/github/workflow/status/accelerator-blueprints/base-blueprint/github-pages-deploy/master)][completed-actions-deploy]
+[![](https://img.shields.io/github/workflow/status/accelerator-blueprints/base-blueprint/create-release/badge.svg)][completed-actions-deploy]
 [![](https://github.com/accelerator-blueprints/base-blueprint/workflows/changelog/badge.svg)][completed-actions-changelog]
 [![](https://github.com/accelerator-blueprints/base-blueprint/workflows/check-markdown-links/badge.svg)][markdown-links-checker]
 
