@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/github/workflow/status/accelerator-blueprints/base-blueprint/github-pages-deploy/master)][completed-actions-deploy]
 [![](https://github.com/accelerator-blueprints/base-blueprint/workflows/changelog/badge.svg)][completed-actions-changelog]
-[![](https://github.com/accelerator-blueprints/base-blueprint/workflows/changelog/badge.svg)][markdown-links-checker]
+[![](https://github.com/accelerator-blueprints/base-blueprint/workflows/check-markdown-links/badge.svg)][markdown-links-checker]
 
 ![](https://img.shields.io/github/commit-activity/m/accelerator-blueprints/base-blueprint)
 ![](https://img.shields.io/github/contributors/accelerator-blueprints/base-blueprint)

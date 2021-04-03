@@ -31,4 +31,6 @@ pulls:
     This PR has been automatically closed because it has not had recent
     activity since being marked as stale.
     Please reopen when work resumes.
-    
+
+# Configuration for https://github.com/probot/stale
+# _extends: .github
