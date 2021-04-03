@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip')"
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.3.4
       with:
         fetch-depth: '0'
 
@@ -29,7 +29,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - uses: release-drafter/release-drafter@v5
+    - uses: release-drafter/release-drafter@v5.15.0
       with:
         publish: true
         prerelease: false
