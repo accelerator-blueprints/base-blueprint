@@ -37,3 +37,9 @@ jobs:
         with:
           fetch-depth: 30
           submodules: 'true'
+
+      - name: Generate changelog
+        uses: charmixer/auto-changelog-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
