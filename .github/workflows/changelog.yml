@@ -51,6 +51,19 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         config_file: .github/tag-changelog-config.js
 
+    - name: Read CHANGELOG.md
+      id: readfile
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: ./CHANGELOG.md
+
+    - name: Write to CHANGELOG.md
+      uses: DamianReeves/write-file-action@master
+      with:
+        path: ./CHANGELOG.md
+        contents: ${{ steps.changelog.outputs.changelog }}${{ steps.readfile.outputs.content }}
+        write-mode: overwrite
+
     - name: push
       uses: github-actions-x/commit@v2.8
       with:
