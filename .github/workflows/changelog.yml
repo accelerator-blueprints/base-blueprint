@@ -39,12 +39,6 @@ jobs:
         fetch-depth: 30
         submodules: 'true'
 
-    # - name: Generate changelog
-    #   id: changelog
-    #   uses: charmixer/auto-changelog-action@v1
-    #   with:
-    #     token: ${{ secrets.GITHUB_TOKEN }}
-
     # https://github.com/marketplace/actions/tag-changelog
     - name: Create changelog text
       uses: loopwerk/conventional-changelog-action@latest
