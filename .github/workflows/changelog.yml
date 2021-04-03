@@ -24,12 +24,12 @@ on:
 
 env:
   isForkedRepository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
-
+  BRANCH: main
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
-    name: update changelog
+    name: Generate changelog for master branch
     steps:
     # To use this repository's private action, you must check out the repository
     - name: Checkout
@@ -43,3 +43,13 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: push
+      uses: github-actions-x/commit@v2.8
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        name: ${{ secrets.GITHUB_USER }}
+        email: ${{ secrets.GITHUB_EMAIL }}
+        push-branch: ${{ evn.BRANCH }}
+        commit-message: 'Updated CHANGELOG.md'
+        force-add: 'true'
+        files: CHANGELOG.md
