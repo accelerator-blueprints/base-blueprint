@@ -1,4 +1,4 @@
-name: check markdown links
+name: check-markdown-links
 
 # Run action on pull request event
 on:
