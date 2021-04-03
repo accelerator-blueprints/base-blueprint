@@ -2,29 +2,16 @@ name: changelog
 
 on:
   push:
-    branches:
-    - main
-    paths-ignore:
-    - "README.md"
-    - "CHANGELOG.md"
-    - "renovate.json"
-  pull_request:
-    types: [opened, reopened]
-    paths-ignore:
-    - "README.md"
-    - "CHANGELOG.md"
-    - "renovate.json"
+    tags:
+    - '*'
   workflow_dispatch:
     inputs:
       tags:
         description: 'manual trigger'
-  release:
-    types: # This configuration does not affect the page_build event above
-    - created
+  # release:
+  #   types: # This configuration does not affect the page_build event above
+  #   - created
 
-  # push:
-  #   tags:
-  #     - '*'
 env:
   isForkedRepository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
   BRANCH: main
@@ -69,16 +56,3 @@ jobs:
         add: CHANGELOG.md
         message: "chore: Update CHANGELOG.md [skip ci]"
         branch: main
-
-    # - name: push
-    #   uses: github-actions-x/commit@v2.8
-    #   with:
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     name: ${{ secrets.GITHUB_USER }}
-    #     email: ${{ secrets.GITHUB_EMAIL }}
-    #     push-branch: ${{ env.BRANCH }}
-    #     commit-message: 'chore: Updated CHANGELOG.md [skip ci]'
-    #     force-add: 'true'
-    #     files: CHANGELOG.md
-    #     rebase: 'true'
-
