@@ -3,7 +3,7 @@ name: changelog
 on:
   push:
     branches:
-      - master
+    - master
     paths-ignore:
     - "README.md"
     - "CHANGELOG.md"
@@ -31,15 +31,15 @@ jobs:
     runs-on: ubuntu-latest
     name: update changelog
     steps:
-      # To use this repository's private action, you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 30
-          submodules: 'true'
+    # To use this repository's private action, you must check out the repository
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 30
+        submodules: 'true'
 
-      - name: Generate changelog
-        uses: charmixer/auto-changelog-action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Generate changelog
+      uses: charmixer/auto-changelog-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
