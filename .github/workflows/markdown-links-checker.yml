@@ -4,7 +4,7 @@ name: check markdown links
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - main  # Set a branch to deploy
   pull_request:
     types: [opened, edited]
   # schedule:
@@ -19,6 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout to latest commit
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     # run markdown linter
     - uses: gaurav-nelson/github-action-markdown-link-check@v1
