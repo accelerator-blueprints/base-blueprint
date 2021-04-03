@@ -8,7 +8,7 @@ repository:
   # A short description of the repository that will show up on GitHub
   description: My base blueprint
   # A URL with more information about the repository
-  homepage: https://ivankatliarchuk.github.io/knowledge-base
+  # homepage: 
   # A comma-separated list of topics to set on the repository
   topics: ivank, accelerator, blueprint
 
