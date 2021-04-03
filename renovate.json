@@ -1,10 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>renovatebot/.github",
-    "docker:enableMajor",
     "config:base",
-    "group:allNonMajor"
   ],
   "reviewersFromCodeOwners": true,
   "semanticCommits": true,
@@ -15,8 +12,8 @@
     "main"
   ],
   "major": { "automerge": false, "labels": [ "dependencies", "minor" ] },
-  "minor": { "automerge": false, "labels": [ "dependencies", "minor" ] },
-  "patch": { "automerge": false },
+  "minor": { "automerge": true, "labels": [ "dependencies", "minor" ] },
+  "patch": { "automerge": true },
   "packageRules": [
     { "updateTypes": ["major"], "addLabels": ["SemVer Major"] },
     { "updateTypes": ["minor"], "addLabels": ["SemVer Minor"] },
