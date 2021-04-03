@@ -39,6 +39,7 @@ jobs:
         submodules: 'true'
 
     - name: Generate changelog
+      id: changelog
       uses: charmixer/auto-changelog-action@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}

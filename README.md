@@ -12,6 +12,10 @@
 [![](https://img.shields.io/github/repo-size/accelerator-blueprints/base-blueprint)](https://github.com/accelerator-blueprints/base-blueprint)
 ![](https://img.shields.io/github/languages/top/accelerator-blueprints/base-blueprint?color=green&logo=markdown&logoColor=blue)
 
+## Releases
+
+- [Releases](https://github.com/github-changelog-generator/github-changelog-generator)
+
 <!-- resources -->
 [base-url]: https://ivankatliarchuk.github.io/knowledge-base
 [completed-actions-deploy]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/gh-pages.yml?query=is%3Acompleted
