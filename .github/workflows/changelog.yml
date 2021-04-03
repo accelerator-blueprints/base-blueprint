@@ -49,7 +49,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         name: ${{ secrets.GITHUB_USER }}
         email: ${{ secrets.GITHUB_EMAIL }}
-        push-branch: ${{ evn.BRANCH }}
+        push-branch: ${{ env.BRANCH }}
         commit-message: 'Updated CHANGELOG.md'
         force-add: 'true'
         files: CHANGELOG.md
