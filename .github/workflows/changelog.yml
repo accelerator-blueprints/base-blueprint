@@ -42,6 +42,7 @@ jobs:
     # https://github.com/marketplace/actions/tag-changelog
     - name: Create changelog text
       uses: loopwerk/conventional-changelog-action@latest
+      id: changelog
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         config_file: .github/tag-changelog-config.js
