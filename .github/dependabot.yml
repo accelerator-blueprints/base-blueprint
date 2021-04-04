@@ -4,10 +4,11 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-    time: '11:00'
-    timezone: UK
+    time: '6:00'
+    timezone: "Europe/Paris"
   labels:
-  - dependencies
+    - ":game_die: dependencies"
+    - ":robot: bot"
   commit-message:
     prefix: deps
 
@@ -15,10 +16,13 @@ updates:
   directory: "/"
   schedule:
     interval: "daily"
-    time: '11:00'
-    timezone: UK
+    time: '6:00'
+    timezone: "Europe/Paris"
   commit-message:
     prefix: ci
+  labels:
+    - ":game_die: dependencies"
+    - ":robot: bot"
 
 - package-ecosystem: "gitsubmodule"
   directory: "/"
@@ -32,13 +36,22 @@ updates:
   directory: "/"
   schedule:
     interval: "weekly"
+  labels:
+    - ":game_die: dependencies"
+    - ":robot: bot"
 
 - package-ecosystem: "docker"
   directory: "/"
   schedule:
     interval: "weekly"
+  labels:
+    - ":game_die: dependencies"
+    - ":robot: bot"
 
 - package-ecosystem: "npm" # See documentation for possible values
   directory: "/" # Location of package manifests
   schedule:
     interval: "daily"
+  labels:
+    - ":game_die: dependencies"
+    - ":robot: bot"
