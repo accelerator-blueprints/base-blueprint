@@ -17,32 +17,44 @@ env:
   DEFAULT_BUMP: patch
   TO_PUBLISH: ${{ contains(github.event.head_commit.message, 'publish') }}
   TO_RELEASE: ${{ contains(github.event.head_commit.message, 'release') }}
-  TO_DRY_RUN: ${{ !contains(github.event.head_commit.message, 'release') && !contains(github.event.head_commit.message, 'publish') }}
+  TO_DRAFT: ${{ !contains(github.event.head_commit.message, 'release') && !contains(github.event.head_commit.message, 'publish') }}
 
 jobs:
-  create-release:
+
+  update-tag:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, 'skip') }}
+
+    outputs:
+      new_tag: ${{ steps.tag.outputs.new_tag }}
+      tag: ${{ steps.tag.outputs.tag }}
+
     steps:
     - uses: actions/checkout@v2.3.4
       with:
         fetch-depth: '0'
+        submodules: 'true'
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.35.0
       id: tag
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DRY_RUN: ${{ env.TO_DRY_RUN }}
+        DRY_RUN: ${{ env.TO_DRAFT }}
 
+  draft:
+    needs: [ update-tag ]
+    runs-on: ubuntu-latest
+    if: ${{ env.TO_DRAFT }}
+
+    steps:
     - uses: release-drafter/release-drafter@v5.15.0
-      if: ${{ env.TO_DRY_RUN }}
       with:
         publish: ${{ env.TO_PUBLISH }}
-        prerelease: ${{ !env.TO_PUBLISH }}
+        prerelease: true
         commitish: ${{ github.ref }}
         # tag: ${{ steps.tag.outputs.tag }}
-        tag: ${{ steps.tag.outputs.new_tag }}
+        tag: ${{ needs.update-tag.outputs.new_tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

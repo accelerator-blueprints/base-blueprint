@@ -16,6 +16,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: |-
-            'Thanks for opening this issue. A contributor should be by to give feedback soon. cc/ @'${{ secrets.GITHUB_USER }}
+            'Thanks for opening this issue. A contributor should be by to give feedback soon. cc/ @${{ secrets.GITHUB_USER }}'
           pr-message: |-
-            'Thanks for opening this pull request! A contributor should be by to give feedback soon. cc/ @'${{ secrets.GITHUB_USER }}
+            'Thanks for opening this pull request! A contributor should be by to give feedback soon. cc/ @${{ secrets.GITHUB_USER }}'
