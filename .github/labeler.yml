@@ -51,7 +51,7 @@ labels:
     sync: true
     matcher:
       files:
-        any: [ ".github/workflow/**", ".circleci/**" ]
+        any: [ ".github/**", ]
         all: [ "!app/**" ]
 
   # PR Files Count
