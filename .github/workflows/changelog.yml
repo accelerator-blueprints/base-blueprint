@@ -46,20 +46,22 @@ jobs:
         contents: ${{ steps.changelog.outputs.changelog }}${{ steps.readfile.outputs.content }}
         write-mode: overwrite
 
-    -
-      name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      if: success()
-      with:
-        commit-message: "chore: Update CHANGELOG.md [skip ci]"
-        title: Update Changelog
-        body: "chore: Update CHANGELOG.md [skip ci]"
-        branch: update-changelog
-        base: main
-
-    # - name: Commit and push CHANGELOG.md
-    #   uses: EndBug/add-and-commit@v7
+    # -
+    #   name: Create Pull Request
+    #   uses: peter-evans/create-pull-request@v3
+    #   if: success()
     #   with:
-    #     add: CHANGELOG.md
-    #     message: "chore: Update CHANGELOG.md [skip ci]"
-    #     branch: main
+    #     commit-message: "chore: Update CHANGELOG.md [skip ci]"
+    #     title: Update Changelog
+    #     body: "chore: Update CHANGELOG.md [skip ci]"
+    #     branch: update-changelog
+    #     base: main
+
+    - name: Commit and push CHANGELOG.md
+      uses: EndBug/add-and-commit@v7
+      with:
+        add: CHANGELOG.md
+        message: "chore: Update CHANGELOG.md [skip ci]"
+        branch: main
+        author_name: github-actions
+        author_email: 41898282+github-actions[bot]@users.noreply.github.com
