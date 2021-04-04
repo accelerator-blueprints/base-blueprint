@@ -3,9 +3,6 @@
 - name: deprecated
   color: "fef2c0"
   description: "This issue/PR relates to a deprecated module."
-- name: docs
-  color: "4071a5"
-  description: "This issue/PR relates to or includes documentation."
 - name: feature
   color: "006b75"
   description: "This issue/PR relates to a feature request."
@@ -58,7 +55,10 @@
 - # documentation
   name: ":memo: documentation"
   color: "c5def5"
-  description: ""
+  description: "This issue/PR relates to or includes documentation."
+- name: ":memo: docs"
+  color: "4071a5"
+  description: "This issue/PR relates to or includes documentation."
 - # duplicate
   name: ":busts_in_silhouette: duplicate"
   color: "cccccc"

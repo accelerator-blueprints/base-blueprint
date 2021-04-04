@@ -78,6 +78,14 @@ labels:
         count:
           gte: 11
 
+  - label: ":memo: documentation"
+    sync: true # remove label if match failed, default: false (pull_request/issue only)
+    matcher:
+      # Matcher will match on any 7 matcher
+      title: "^docs:.*"
+      commits: "^docs:.*"
+      files:
+        any: [ "README.md'", "CHANGELOG.md" ]
 
 # Optional, if you want labels to generate a success/failure status check
 checks:
