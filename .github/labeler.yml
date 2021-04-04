@@ -46,6 +46,12 @@ labels:
     matcher:
       # This is shorthand for any: [".github/**"]
       files: ".github/**"
+      author:
+        - github-actions
+        - actions-bot
+        - rennovate
+        - dependabot
+        - bot
 
   - label: ":robot: ci"
     sync: true
