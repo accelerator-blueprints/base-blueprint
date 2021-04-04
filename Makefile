@@ -15,4 +15,4 @@ hooks: ## Setup pre commit.
 
 validate: ## Validate files with pre-commit hooks
 	@pre-commit run --all-files
-	
+
