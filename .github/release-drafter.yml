@@ -12,6 +12,8 @@ template: |
 
   $CHANGES
 
+  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+
   ### Contributors
 
   ❤️ A big thanks to $CONTRIBUTORS
@@ -19,12 +21,6 @@ template: |
 no-changes-template: |
   <!-- Optional: add a release summary here -->
   **No changes**: No pull requests since last release
-
-  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
-
-  ### Contributors
-
-  ❤️ A big thanks to $CONTRIBUTORS
 
 categories:
   - title: '💥 Breaking'
