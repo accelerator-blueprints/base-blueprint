@@ -12,10 +12,11 @@ jobs:
   welcome-new-contributor:
     runs-on: ubuntu-latest
     steps:
+    # https://github.com/actions/first-interaction
       - name: 'Greet the contributor'
         uses: actions/first-interaction@v1.1.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          epo-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: |-
             'Thanks for opening this issue. A contributor should be by to give feedback soon. cc/ @${{ secrets.GITHUB_USER }}'
           pr-message: |-
