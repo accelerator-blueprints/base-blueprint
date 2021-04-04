@@ -1,16 +1,13 @@
 name: changelog
 
 on:
-  push:
-    tags:
-    - '*'
   workflow_dispatch:
     inputs:
       tags:
         description: 'manual trigger'
-  # release:
-  #   types: # This configuration does not affect the page_build event above
-  #   - created
+  release:
+    types: # This configuration does not affect the page_build event above
+    - created
 
 env:
   isForkedRepository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
