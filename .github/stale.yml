@@ -13,7 +13,7 @@ exemptLabels:
   - proposal
   - needs review
   - build system
-  
+
 issues:
   # Comment to post when marking an issue as stale.
   markComment: >

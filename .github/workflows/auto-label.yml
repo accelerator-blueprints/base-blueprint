@@ -12,6 +12,8 @@ jobs:
   simple-labels:
     runs-on: ubuntu-latest
     steps:
+    # labels and minimatch globs to match to apply the label.
+    # https://github.com/actions/labeler
     - uses: actions/labeler@v3
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
