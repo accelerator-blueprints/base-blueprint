@@ -26,7 +26,7 @@ jobs:
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         configuration-path: '.github/label-simple-cfg.yml'
-        sync-labels: true
+        sync-labels: false
 
   labels:
     needs: [ simple-labels ]
@@ -43,7 +43,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           yaml-file: .github/labels-cfg.yml
-          skip-delete: false
+          skip-delete: true
           dry-run: false
           # exclude: |
           #   help*
