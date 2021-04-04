@@ -1,18 +1,15 @@
 name: "pull-request-assing-reviewer"
 on:
   pull_request:
-    types: [assigned, unassigned]
   workflow_dispatch:
 
 # opened, ready_for_review, reopened,
 # https://github.com/marketplace/actions/reviewer-lottery
 # https://github.com/marketplace/actions/github-action-for-assignee-to-reviewer
+# https://github.com/marketplace/actions/auto-assign-action
 jobs:
   reviewers:
     runs-on: ubuntu-latest
     steps:
     - name: add pull request reviewer
-      uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
-      with:
-        reviewers: ${{ secrets.GITHUB_USER}}
-        token: ${{ secrets.GITHUB_TOKEN }}
+      uses: kentaro-m/auto-assign-action@v1.1.2
