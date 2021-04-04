@@ -12,18 +12,19 @@ template: |
 
   $CHANGES
 
-  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+  ### Contributors
 
-  All contributors: $CONTRIBUTORS
+  ❤️ A big thanks to $CONTRIBUTORS
 
 no-changes-template: |
   <!-- Optional: add a release summary here -->
-  **Disclaimer**: This is an automatically generated changelog draft
   **No changes**: No pull requests since last release
 
-  $BODY
-
   For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+
+  ### Contributors
+
+  ❤️ A big thanks to $CONTRIBUTORS
 
 categories:
   - title: '💥 Breaking'
