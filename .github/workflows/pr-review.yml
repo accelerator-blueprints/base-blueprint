@@ -1,8 +1,9 @@
-name: "Reviewer lottery"
+name: "pull-request-assing-reviewer"
 on:
   pull_request:
     types: [assigned, unassigned]
-    
+  workflow_dispatch:
+
 # opened, ready_for_review, reopened,
 # https://github.com/marketplace/actions/reviewer-lottery
 # https://github.com/marketplace/actions/github-action-for-assignee-to-reviewer
