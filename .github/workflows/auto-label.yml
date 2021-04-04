@@ -7,7 +7,7 @@ on:
       tags:
         description: 'manual trigger'
   pull_request:
-    branches: [main]
+    types: [ opened, synchronize, reopened ]
 
 jobs:
   simple-labels:
@@ -26,14 +26,24 @@ jobs:
         configuration-path: '.github/label-simple-cfg.yml'
         sync-labels: true
 
-  # labels:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   # https://github.com/marketplace/actions/github-labeler
-  #   - uses:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+    # https://github.com/marketplace/actions/github-labeler
+      -
+        name: checkout
+        uses: actions/checkout@v2
+      -
+        name: run labeler
+        if: success()
+        uses: crazy-max/ghaction-github-labeler@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels-cfg.yml
+          skip-delete: false
+          dry-run: false
+          exclude: |
+            help*
+            *issue
 
-
-# https://github.com/marketplace/actions/github-labeler
-# https://github.com/pycontribs/meta/blob/master/.github/labels.yml
 # https://github.com/pycontribs/tender
-# pull_request_target
