@@ -29,7 +29,7 @@ jobs:
         configuration-path: '.github/label-simple-cfg.yml'
         sync-labels: false
 
-  labels:
+  set-labels:
     needs: [ simple-labels ]
     runs-on: ubuntu-latest
     steps:
@@ -51,7 +51,7 @@ jobs:
           #   *issue
 # https://github.com/marketplace/actions/multi-labeler
   labels-everything:
-    needs: [ simple-labels ]
+    needs: [ set-labels ]
     runs-on: ubuntu-latest
     steps:
       - uses: fuxingloh/multi-labeler@v1
