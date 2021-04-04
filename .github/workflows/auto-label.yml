@@ -1,11 +1,24 @@
 name: auto-label
-on: [pull_request]
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'manual trigger'
+  pull_request:
+    branches: [main]
 
 jobs:
-  components:
+  simple-labels:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v3
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        configuration-path: '.github/auto-label.yml'
+        configuration-path: '.github/auto-label-config.yml'
+        sync-labels: true
+
+# https://github.com/marketplace/actions/github-labeler
+# https://github.com/pycontribs/meta/blob/master/.github/labels.yml
+# https://github.com/pycontribs/tender
+# pull_request_target
