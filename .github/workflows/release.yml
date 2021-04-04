@@ -28,6 +28,7 @@ jobs:
     outputs:
       new_tag: ${{ steps.tag.outputs.new_tag }}
       tag: ${{ steps.tag.outputs.tag }}
+      draft: ${{ env.TO_DRAFT }}
 
     steps:
     - uses: actions/checkout@v2.3.4
@@ -45,7 +46,8 @@ jobs:
   draft:
     needs: [ update-tag ]
     runs-on: ubuntu-latest
-    if: ${{ env.TO_DRAFT == 'true' }}
+    # environment variables not yet supported here
+    if: ${{ !contains(github.event.head_commit.message, 'release') && !contains(github.event.head_commit.message, 'publish') }}
 
     steps:
     - uses: release-drafter/release-drafter@v5.15.0
