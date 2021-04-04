@@ -8,6 +8,12 @@ daysUntilClose: 30
 # Label to use when marking an issue as stale
 staleLabel: stale
 
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - proposal
+  - needs review
+  - build system
+  
 issues:
   # Comment to post when marking an issue as stale.
   markComment: >

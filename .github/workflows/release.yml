@@ -8,16 +8,21 @@ on:
     - "README.md"
     - "CHANGELOG.md"
     - "renovate.json"
+    
+# consider on pull_request with label 'release'
 
 env:
   INITIAL_VERSION: 0.0.1
   WITH_V: true
   DEFAULT_BUMP: patch
+  TO_PUBLISH: ${{ contains(github.event.head_commit.message, 'publish') }}
+  TO_PRERELEASE: ${{ contains(github.event.head_commit.message, 'prerelease') }}
+  TO_RELEASE: ${{ contains(github.event.head_commit.message, 'release') }}
 
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'skip')"
+    if: ${{ !contains(github.event.head_commit.message, 'skip') }}
     steps:
     - uses: actions/checkout@v2.3.4
       with:
@@ -28,13 +33,16 @@ jobs:
       id: tag
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DRY_RUN: ${{ !env.TO_RELEASE }}
 
     - uses: release-drafter/release-drafter@v5.15.0
+      if: ${{ !env.TO_RELEASE }}
       with:
-        publish: true
-        prerelease: false
+        publish: ${{ env.TO_RELEASE }}
+        prerelease: ${{ !env.TO_RELEASE }}
         commitish: ${{ github.ref }}
-        tag: ${{ steps.tag.outputs.tag }}
+        # tag: ${{ steps.tag.outputs.tag }}
+        tag: ${{ steps.tag.outputs.new_tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
