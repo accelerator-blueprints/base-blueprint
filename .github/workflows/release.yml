@@ -57,7 +57,6 @@ jobs:
         commitish: ${{ github.ref }}
         # tag: ${{ steps.tag.outputs.tag }}
         tag: ${{ needs.update-tag.outputs.new_tag }}
-        no-changes-template: '* Test No changes'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

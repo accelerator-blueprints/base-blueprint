@@ -5,6 +5,10 @@ template: |
   # What's Changed
   $CHANGES
 
+no-changes-template: |
+  <!-- Optional: add a release summary here -->
+  # No Pull Requests
+
 categories:
   - title: '💥 Breaking'
     label: 'type: breaking'
