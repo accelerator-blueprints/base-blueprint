@@ -1,0 +1,17 @@
+name: "Reviewer lottery"
+on:
+  pull_request:
+    types: [assigned, unassigned]
+    
+# opened, ready_for_review, reopened,
+# https://github.com/marketplace/actions/reviewer-lottery
+# https://github.com/marketplace/actions/github-action-for-assignee-to-reviewer
+jobs:
+  reviewers:
+    runs-on: ubuntu-latest
+    steps:
+    - name: add pull request reviewer
+      uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
+      with:
+        reviewers: ${{ secrets.GITHUB_USER}}
+        token: ${{ secrets.GITHUB_TOKEN }}
