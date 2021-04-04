@@ -1,6 +1,7 @@
-name: "pull-request-assing-reviewer"
+name: "pull-request-auto-assing"
 on:
   pull_request:
+  pull_request_target:
   workflow_dispatch:
 
 # opened, ready_for_review, reopened,
