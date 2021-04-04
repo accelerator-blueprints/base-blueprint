@@ -1,3 +1,4 @@
+---
 name: changelog
 
 on:
@@ -55,7 +56,7 @@ jobs:
         title: Update Changelog
         body: "chore: Update CHANGELOG.md [skip ci]"
         branch: update-changelog
-        base:  ${{ github.head_ref }}
+        base: ${{ github.head_ref }}
         committer: GitHub <noreply@github.com>
         author: actions-bot <actions-bot@users.noreply.github.com>
 

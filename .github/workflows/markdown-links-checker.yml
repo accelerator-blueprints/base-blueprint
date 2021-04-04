@@ -1,3 +1,4 @@
+---
 name: check-markdown-links
 
 # Run action on pull request event
@@ -19,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout to latest commit
-    - uses: actions/checkout@main
+      - uses: actions/checkout@main
     # run markdown linter
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1

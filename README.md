@@ -24,6 +24,3 @@
 [url-changelog]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/changelog.yml
 [badge-links-checker]: https://github.com/accelerator-blueprints/base-blueprint/workflows/check-markdown-links/badge.svg
 [url-links-checker]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/markdown-links-checker.yml
-
-<!-- TODO -->
-<!-- Move settings to .github https://github.com/release-drafter/release-drafter -->

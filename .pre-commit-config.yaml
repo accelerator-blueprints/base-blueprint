@@ -65,7 +65,7 @@ repos:
 - repo: https://github.com/adrienverge/yamllint.git
   rev: v1.24.2
   hooks:
-    - id: yamllint
-      files: \.(yaml|yml)$
-      types: [file, yaml]
-      entry: yamllint --strict
+  - id: yamllint
+    files: \.(yaml|yml)$
+    types: [file, yaml]
+    entry: 'yamllint --strict -d "{extends: relaxed, rules: {line-length: {max: 200}}}"'

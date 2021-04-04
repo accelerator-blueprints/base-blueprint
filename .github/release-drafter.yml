@@ -33,21 +33,21 @@ categories:
       - major-rfe
   - title: '🚀 New features and improvements'
     labels:
-    - feature
-    - enhancement
+      - feature
+      - enhancement
   - title: '🐛 Bug Fixes'
     label:
-    - 'type: bug'
-    - 'fix'
-    - 'bugfix'
-    - regression
+      - 'type: bug'
+      - 'fix'
+      - 'bugfix'
+      - regression
   - title: 🐛 Major bug fixes
     labels:
-    - major-bug
+      - major-bug
   - title: '👻 Maintenance'
     label:
-    - 'type: maintenance'
-    - 'chore'
+      - 'type: maintenance'
+      - 'chore'
   - title: 'Documentation'
     label: 'type: docs'
   - title: 'Dependency Updates'
@@ -99,10 +99,10 @@ version-resolver:
   default: patch
 
 exclude-labels:
-- reverted
-- no-changelog
-- skip-changelog
-- invalid
+  - reverted
+  - no-changelog
+  - skip-changelog
+  - invalid
 
 autolabeler:
   - label: 'chore'
