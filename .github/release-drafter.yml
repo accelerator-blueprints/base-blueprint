@@ -1,13 +1,29 @@
+# Configuration for Release Drafter: https://github.com/toolmantim/release-drafter
+# _extends: .github
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 template: |
   <!-- Optional: add a release summary here -->
-  # What's Changed
+  **Disclaimer**: This is an automatically generated changelog draft
+
+  <summary of changes here>
+
+  ## CHANGELOG
+
   $CHANGES
+
+  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
+
+  All contributors: $CONTRIBUTORS
 
 no-changes-template: |
   <!-- Optional: add a release summary here -->
-  # No Pull Requests
+  **Disclaimer**: This is an automatically generated changelog draft
+  **No changes**: No pull requests since last release
+
+  $BODY
+
+  For full changes, see the [comparison between $PREVIOUS_TAG and v$NEXT_MINOR_VERSION](https://github.com/accelerator-blueprints/base-blueprint/compare/v$PREVIOUS_TAG...v$NEXT_MINOR_VERSION)
 
 categories:
   - title: '💥 Breaking'

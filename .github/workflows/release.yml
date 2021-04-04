@@ -47,7 +47,8 @@ jobs:
     needs: [ update-tag ]
     runs-on: ubuntu-latest
     # environment variables not yet supported here
-    if: ${{ needs.update-tag.outputs.draft }}
+    # running this job only for master branch
+    if: ${{ needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
 
     steps:
     - uses: release-drafter/release-drafter@v5.15.0
