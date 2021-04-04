@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   issues:
     types: [ opened, edited ]
-  ssue_comment:
+  issue_comment:
     types: [ created, edited ]
 
 jobs:
