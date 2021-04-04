@@ -1,17 +1,11 @@
 # Format and labels used aim to match those used by Ansible project
 # https://github.com/marketplace/actions/github-labeler
-- name: bug
-  color: "fbca04"
-  description: "This issue/PR relates to a bug."
 - name: deprecated
   color: "fef2c0"
   description: "This issue/PR relates to a deprecated module."
 - name: docs
   color: "4071a5"
   description: "This issue/PR relates to or includes documentation."
-- name: enhancement
-  color: "ededed"
-  description: "This issue/PR relates to a feature request."
 - name: feature
   color: "006b75"
   description: "This issue/PR relates to a feature request."
@@ -30,9 +24,6 @@
 - name: stale
   color: "eeeeee"
   description: "Not updated in long time, will be closed soon."
-- name: wontfix
-  color: "eeeeee"
-  description: "This will not be worked on"
 - name: test
   color: "0e8a16"
   description: "This PR relates to tests, QA, CI."
@@ -44,14 +35,22 @@
   name: ":bell: automerge"
   color: "8f4fbc"
   description: ""
+- # automerge
+  name: ":bell: approved"
+  color: "8f4fbc"
+  description: ""
 - # bot
   name: ":robot: bot"
+  color: "69cde9"
+  description: ""
+- # automation
+  name: ":robot: ci"
   color: "69cde9"
   description: ""
 - # bug
   name: ":bug: bug"
   color: "b60205"
-  description: ""
+  description: "This issue/PR relates to a bug."
 - # dependencies
   name: ":game_die: dependencies"
   color: "0366d6"
@@ -67,7 +66,7 @@
 - # enhancement
   name: ":sparkles: enhancement"
   color: "0054ca"
-  description: ""
+  description: "This issue/PR relates to a feature request."
 - # feature request
   name: ":bulb: feature request"
   color: "0e8a16"
@@ -124,3 +123,17 @@
   name: ":coffin: wontfix"
   color: "ffffff"
   description: ""
+# commit sizes
+- # size s
+  name: ":smiley_cat: size S"
+  color: "ffffff"
+  description: ""
+- # size M
+  name: ":nauseated_face: size M"
+  color: "ffffff"
+  description: ""
+- # size L
+  name: ":skull_and_crossbones: size L"
+  color: "ffffff"
+  description: ""
+# https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
