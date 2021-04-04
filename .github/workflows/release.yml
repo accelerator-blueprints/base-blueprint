@@ -33,7 +33,7 @@ jobs:
       id: tag
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DRY_RUN: ${{ env.TO_RELEASE }}
+        DRY_RUN: ${{ env.TO_DRY_RUN }}
 
     - uses: release-drafter/release-drafter@v5.15.0
       if: ${{ env.TO_DRY_RUN }}
