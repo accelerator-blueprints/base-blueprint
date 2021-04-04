@@ -3,9 +3,6 @@ name: changelog
 
 on:
   workflow_dispatch:
-    inputs:
-      tags:
-        description: 'manual trigger'
   release:
     types: [published]
 
