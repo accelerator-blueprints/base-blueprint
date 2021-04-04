@@ -62,9 +62,13 @@ version-resolver:
   major:
     labels:
       - 'type: breaking'
+      - 'major'
+
   minor:
     labels:
       - 'type: feature'
+      - 'minor'
+
   patch:
     labels:
       - 'type: bug'
@@ -72,6 +76,10 @@ version-resolver:
       - 'type: docs'
       - 'type: dependencies'
       - 'type: security'
+      - 'patch'
+      - 'chore'
+      - 'fix'
+  default: patch
 
 exclude-labels:
 - reverted

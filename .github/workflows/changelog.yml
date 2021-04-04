@@ -6,15 +6,14 @@ on:
       tags:
         description: 'manual trigger'
   release:
-    types: # This configuration does not affect the page_build event above
-    - created
+    types: [published]
 
 env:
   isForkedRepository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
   BRANCH: main
 
 jobs:
-  changelog:
+  update-changelog:
     runs-on: ubuntu-latest
     name: Generate changelog for main branch
     if: "!contains(github.event.head_commit.message, 'skip')"
@@ -47,9 +46,20 @@ jobs:
         contents: ${{ steps.changelog.outputs.changelog }}${{ steps.readfile.outputs.content }}
         write-mode: overwrite
 
-    - name: Commit and push CHANGELOG.md
-      uses: EndBug/add-and-commit@v7
+    -
+      name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      if: success()
       with:
-        add: CHANGELOG.md
-        message: "chore: Update CHANGELOG.md [skip ci]"
-        branch: main
+        commit-message: "chore: Update CHANGELOG.md [skip ci]"
+        title: Update Changelog
+        body: "chore: Update CHANGELOG.md [skip ci]"
+        branch: update-changelog
+        base: main
+
+    # - name: Commit and push CHANGELOG.md
+    #   uses: EndBug/add-and-commit@v7
+    #   with:
+    #     add: CHANGELOG.md
+    #     message: "chore: Update CHANGELOG.md [skip ci]"
+    #     branch: main
