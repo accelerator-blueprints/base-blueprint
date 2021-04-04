@@ -45,7 +45,7 @@ jobs:
   draft:
     needs: [ update-tag ]
     runs-on: ubuntu-latest
-    if: env.TO_DRAFT
+    if: ${{ env.TO_DRAFT == 'true' }}
 
     steps:
     - uses: release-drafter/release-drafter@v5.15.0
