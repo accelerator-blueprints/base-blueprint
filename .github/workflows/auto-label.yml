@@ -2,6 +2,7 @@
 name: auto-label
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       tags:
@@ -27,6 +28,7 @@ jobs:
         sync-labels: true
 
   labels:
+    needs: [ simple-labels ]
     runs-on: ubuntu-latest
     steps:
     # https://github.com/marketplace/actions/github-labeler
@@ -42,8 +44,6 @@ jobs:
           yaml-file: .github/labels-cfg.yml
           skip-delete: false
           dry-run: false
-          exclude: |
-            help*
-            *issue
-
-# https://github.com/pycontribs/tender
+          # exclude: |
+          #   help*
+          #   *issue
