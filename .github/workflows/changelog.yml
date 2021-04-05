@@ -34,17 +34,23 @@ jobs:
         config_file: .github/tag-changelog-config.js
 
     - name: read changelog.md
-      id: readfile
+      id: changelog-history
       uses: juliangruber/read-file-action@v1
       with:
-        path: CHANGELOG.md
+        path: .github/changelog.history
+
+    - name: read changelog.md
+      id: changelog-template
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: .github/changelog.template
 
     - name: Write to CHANGELOG.md
       uses: DamianReeves/write-file-action@master
-      # if: ${{ steps.git-diff.outputs.count > 0 }}
       with:
         path: CHANGELOG.md
-        contents: ${{ steps.changelog.outputs.changelog }}${{ steps.readfile.outputs.content }}
+        contents: |
+          ${{ steps.changelog-template.outputs.content }}${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
         write-mode: overwrite
 
     - name: check local changes
@@ -80,7 +86,7 @@ jobs:
         reviewers: ${{ github.repository_owner }}
         assignees: ${{ github.repository_owner }}
         title: |
-          "docs: update changelog "tag:v${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
+          "docs: update changelog "tag:${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
         commit-message: |
           'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
         body: |
