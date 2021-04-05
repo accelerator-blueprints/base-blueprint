@@ -29,7 +29,7 @@ jobs:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     source_repo_path: ${{ env.TEMPLATE_REPO }}
       # https://github.com/narrowspark/template-sync-action
-      - uses: narrowspark/template-sync-action@v1.0.0-alpha.9
+      - uses: narrowspark/template-sync-action@v1.0.0-alpha.8
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_author_name: ${{ env.COMMITTER_BOT }}
