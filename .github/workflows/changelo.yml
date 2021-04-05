@@ -29,6 +29,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         skip-version-file: true
         skip-commit: false
+        output-file: "false"
         release-count: 0
 
     - name: read 'templates/changelog'
@@ -37,24 +38,26 @@ jobs:
       with:
         path: .github/templates/changelog
 
-    - name: read 'changelog.md'
-      id: ch-updated
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: CHANGELOG.md
+    # - name: read 'changelog.md'
+    #   id: ch-updated
+    #   uses: juliangruber/read-file-action@v1
+    #   with:
+    #     path: CHANGELOG.md
 
     - name: write to changelog.md
       uses: DamianReeves/write-file-action@master
       with:
         path: CHANGELOG.md
         contents: |
-          ${{ steps.ch-template.outputs.content }}${{ steps.ch-updated.outputs.content }}
+          ${{ steps.ch-template.outputs.content }}${{ steps.ch.outputs.changelog }}
         write-mode: overwrite
 
     - name: read file
       run: |
         echo ${{ steps.ch.outputs.skipped }}
         echo ${{ steps.ch.outputs.tag }}
+
+        cat CHANGELOG.md
 
     - name: check local changes
       id: diff
