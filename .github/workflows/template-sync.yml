@@ -4,16 +4,18 @@ on:
   schedule:
   - cron:  "30 1,18 * * *"
   workflow_dispatch:
+  push:
 
 env:
-  TEMPLATE_REPO: accelerator-blueprints/base-blueprint
+  TEMPLATE_REPO: accelerator-blueprints/base-blueprint.git
   COMMITTER_BOT: GitHub <noreply@github.com>
   AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
 
 jobs:
-  repo-template-sync:
+  sync-repo-template:
     runs-on: ubuntu-latest
-    # if: github.repository != 'accelerator-blueprints/base-blueprint'
+    name: sync with template repository
+    if: github.repository != 'accelerator-blueprints/base-blueprint'
     steps:
       # To use this repository's private action, you must check out the repository
       - name: checkout
@@ -27,7 +29,8 @@ jobs:
         uses: actions/actions-template-sync
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_repo_path: accelerator-blueprints/base-blueprint.git
+          source_repo_path: ${{ env.TEMPLATE_REPO }}.git
+
       # https://github.com/narrowspark/template-sync-action
       # - uses: narrowspark/template-sync-action@v1.0.0-alpha.9
       #   with:
@@ -37,3 +40,17 @@ jobs:
       #     template_repository: ${{ env.TEMPLATE_REPO }}
       #     ref: refs/heads/master
 
+  sync-with-template:
+    name: Sync with template repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+    - name: Sync with template repository
+      uses: remal-github-actions/sync-with-template@v1
+      with:
+        githubToken: '${{ secrets.GITHUB_TOKEN }}'
+        templateRepository: ${{ env.TEMPLATE_REPO }}
+        ignorePaths: |
+          *.lock
+          dist/**
