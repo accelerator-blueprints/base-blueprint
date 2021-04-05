@@ -8,6 +8,8 @@ on:
 
 env:
   BRANCH: main
+  COMMITTER_BOT: GitHub <noreply@github.com>
+  AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
 
 jobs:
   update-changelog:
@@ -51,8 +53,7 @@ jobs:
         changed_files=$(git status --porcelain --untracked-files=no | wc -l)
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
-
-
+        echo "${{ steps.changelog.outputs.changes }}"
       shell: bash
 
     -
@@ -64,9 +65,8 @@ jobs:
         base: ${{ github.head_ref }}
         delete-branch: true
         labels: 'kind/docs,:memo: documentation,:memo: docs'
-        # committer: GitHub <noreply@github.com>
-        committer: ${{ github.author }}
-        author: actions-bot <actions-bot@users.noreply.github.com>
+        committer: ${{ env.COMMITTER_BOT }}
+        author: ${{ AUTHOR_BOT }}
         title: |
           "docs: update changelog "${{ github.workflow }} #${{ github.run_number }}" '
         commit-message: |
