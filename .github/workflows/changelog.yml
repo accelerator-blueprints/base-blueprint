@@ -53,6 +53,14 @@ jobs:
           ${{ steps.changelog-template.outputs.content }}${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
         write-mode: overwrite
 
+    - name: write to changelog.md
+      uses: DamianReeves/write-file-action@master
+      with:
+        path: .github/changelog.history
+        contents: |
+          ${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
+        write-mode: overwrite
+
     - name: check local changes
       id: diff
       run: |
@@ -77,6 +85,7 @@ jobs:
         branch: docs/changelog
         base: ${{ github.head_ref }}
         delete-branch: true
+        # labels: 'kind/docs,:memo: documentation,:memo: docs'
         labels: |
           kind/docs
           :memo: documentation
