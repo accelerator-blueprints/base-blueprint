@@ -2,6 +2,9 @@
 name: create-release
 
 on:
+  schedule:
+  - cron:  "30 1,18 * * *"
+  workflow_dispatch:
   push:
     branches:
     - main
