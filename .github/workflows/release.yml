@@ -18,7 +18,7 @@ env:
   DEFAULT_BUMP: patch
   TO_PUBLISH: ${{ contains(github.event.head_commit.message, 'publish') }}
   TO_RELEASE: ${{ contains(github.event.head_commit.message, 'release') }}
-  TO_DRAFT: ${{ contains(github.event.head_commit.message, 'release') }}
+  TO_DRAFT: ${{ !contains(github.event.head_commit.message, 'release') }}
 
 jobs:
 
