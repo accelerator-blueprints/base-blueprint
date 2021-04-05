@@ -89,6 +89,9 @@ jobs:
           kind/docs
           :memo: documentation
           :memo: docs
+          :bell: approved
+          :bell: automerge
+          :robot: bot
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
         title: |
