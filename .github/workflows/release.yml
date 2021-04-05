@@ -54,12 +54,15 @@ jobs:
     steps:
     - uses: cschleiden/replace-tokens@v1
       with:
-        tokenPrefix: '#{'
-        tokenSuffix: '}#'
         files: '[".github/release-drafter.yml"]'
       env:
         OTHER_CHANGES: |
           test this changes
+        CALLBACK: 'https://google.com'
+
+    - name: read file
+      run: |
+        cat .github/release-drafter.yml
 
     - uses: release-drafter/release-drafter@v5.15.0
       with:
