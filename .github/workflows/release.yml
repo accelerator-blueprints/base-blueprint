@@ -17,8 +17,7 @@ env:
   WITH_V: true
   DEFAULT_BUMP: patch
   TO_PUBLISH: ${{ contains(github.event.head_commit.message, 'publish') }}
-  TO_RELEASE: ${{ contains(github.event.head_commit.message, 'release') }}
-  TO_DRAFT: ${{ !contains(github.event.head_commit.message, 'release') }}
+  TO_DRAFT: ${{ contains(github.event.head_commit.message, 'draft') }}
 
 jobs:
 
@@ -49,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     # environment variables not yet supported here
     # running this job only for master branch
-    if: ${{ needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
+    if: ${{ !needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
 
     steps:
 
@@ -67,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     # environment variables not yet supported here
     # running this job only for master branch
-    if: ${{ !needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
+    if: ${{ needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
 
     steps:
 
