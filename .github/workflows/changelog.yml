@@ -13,6 +13,7 @@ jobs:
   update-changelog:
     runs-on: ubuntu-latest
     name: changelog generator
+    timeout-minutes: 2
     if: "!contains(github.event.head_commit.message, 'skip')"
     steps:
     # To use this repository's private action, you must check out the repository
@@ -52,8 +53,8 @@ jobs:
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
 
-        echo ${{ steps.changelog.outputs.changes }}
-        echo ${{ steps.changelog.outputs.changes > 0}}
+        # echo ${{ steps.changelog.outputs.changes }}
+        # echo ${{ steps.changelog.outputs.changes > 0}}
 
     -
       name: create pull request
