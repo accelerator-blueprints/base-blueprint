@@ -56,6 +56,15 @@ jobs:
     - name: read file
       run: |
         echo ${{ steps.ch.outputs.skipped }}
+        echo ${{ steps.ch.outputs.tag }}
+
+    - name: check local changes
+      id: diff
+      run: |
+        changed_files=$(git status --porcelain --untracked-files=all | wc -l)
+        echo ::set-output name=count::$changed_files
+        echo ::set-output name=created::$(date)
+      shell: bash
 
     -
       name: create pull request
