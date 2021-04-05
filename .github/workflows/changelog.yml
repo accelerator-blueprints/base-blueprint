@@ -24,12 +24,19 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: update changelog
-      uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+    # - name: update changelog
+    #   uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+    #   id: ch
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+        # output: CHANGELOG.md
+
+    - name: create changelog text
+      uses: loopwerk/conventional-changelog-action@latest
       id: ch
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        # output: CHANGELOG.md
+        # config_file: .github/tag-changelog-config.js
 
     - name: read 'templates/changelog'
       id: ch-template
