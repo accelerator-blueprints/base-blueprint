@@ -53,7 +53,7 @@ jobs:
         changed_files=$(git status --porcelain --untracked-files=no | wc -l)
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
-        echo "${{ steps.changelog.outputs.changes.count > 0 }}"
+        echo "${{ steps.changelog.outputs.changes > 0 }}"
       shell: bash
 
     -
