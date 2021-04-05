@@ -15,6 +15,7 @@ jobs:
   sync-repo-template:
     runs-on: ubuntu-latest
     name: sync with template repository v1
+    timeout-minutes: 2
     if: github.repository != 'accelerator-blueprints/base-blueprint'
     steps:
       # To use this repository's private action, you must check out the repository
@@ -43,7 +44,7 @@ jobs:
   sync-with-template:
     name: sync with template repository v2
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 2
     if: github.repository != 'accelerator-blueprints/base-blueprint'
     steps:
     - name: Sync with template repository
