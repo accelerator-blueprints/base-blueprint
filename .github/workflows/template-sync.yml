@@ -1,0 +1,28 @@
+name: template-sync
+
+on:
+  schedule:
+  - cron:  "30 1,18 * * *"
+  workflow_dispatch:
+
+env:
+  TEMPLATE_REPO: accelerator-blueprints/base-blueprint
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    if: github.repository != 'accelerator-blueprints/base-blueprint'
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          submodules: 'true'
+
+      # https://github.com/marketplace/actions/actions-template-sync
+      - name: actions-template-sync
+        uses: actions/actions-template-sync
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: ${{ env.TEMPLATE_REPO }}
