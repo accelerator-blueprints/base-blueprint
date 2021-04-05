@@ -39,14 +39,13 @@ jobs:
         securityLabel: '### 🛡️ Security'
         issuesLabel: '### 📁 Other issues'
         prLabel: '### 📁 Other pull requests'
-        addSections: '{"documentation":{"prefix":"### 📖 Documentation","labels":["documentation"]}}'
+        addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["docs"]}}'
         issues: true
         issuesWoLabels: true
         pullRequests: true
         prWoLabels: true
         author: true
         unreleased: true
-        compareLink: true
         stripGeneratorNotice: true
 
     - name: read 'templates/changelog'
