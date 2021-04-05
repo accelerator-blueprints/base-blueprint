@@ -64,6 +64,7 @@ jobs:
         changed_files=$(git status --porcelain --untracked-files=all | wc -l)
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date)
+        echo ::set-output
       shell: bash
 
     -
@@ -73,9 +74,9 @@ jobs:
       # issue: https://github.com/peter-evans/create-pull-request/issues/48
       id: cpr
       with:
-        branch: docs/changelog
-        base: ${{ github.head_ref }}
-        delete-branch: true
+        # branch: docs/changelog
+        # base: ${{ github.head_ref }}
+        # delete-branch: true
         # labels: |
         #   kind/docs
         #   :memo: documentation
