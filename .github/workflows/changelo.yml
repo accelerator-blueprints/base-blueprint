@@ -75,13 +75,13 @@ jobs:
         branch: docs/changelog
         base: ${{ github.head_ref }}
         delete-branch: true
-        labels: |
-          kind/docs
-          :memo: documentation
-          :memo: docs
-          :bell: approved
-          :bell: automerge
-          :robot: bot
+        # labels: |
+        #   kind/docs
+        #   :memo: documentation
+        #   :memo: docs
+        #   :bell: approved
+        #   :bell: automerge
+        #   :robot: bot
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
         title: |
