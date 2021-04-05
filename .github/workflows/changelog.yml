@@ -53,8 +53,14 @@ jobs:
         changed_files=$(git status --porcelain --untracked-files=all | wc -l)
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
-        echo ::set-output name=changes::${{ steps.changelog.outputs.changes }}
       shell: bash
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.35.0
+      id: tag
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DRY_RUN: true
 
     -
       name: create pull request
@@ -69,7 +75,7 @@ jobs:
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
         title: |
-          "docs: update changelog "${{ github.workflow }} #${{ github.run_number }}" '
+          "docs: update changelog "${{ steps.tag.outputs.new_tag }} #${{ github.run_number }}" '
         commit-message: |
           'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
         body: |
@@ -81,6 +87,7 @@ jobs:
 
           ## Workflow
 
+          - New Tag: ${{ steps.tag.outputs.new_tag }}
           - Name: ${{ github.workflow }}
           - Run ID: ${{ github.run_id }}
           - Run Number: ${{ github.run_number }}
