@@ -26,10 +26,11 @@ jobs:
       uses: TriPSs/conventional-changelog-action@v3
       id: ch
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        skip-version-file: 'true'
-        output-file: 'false'
+        github-token: ''
         release-count: 0
+        output-file: false
+        skip-version-file: true
+        skip-commit: true
 
     - name: read 'templates/changelog'
       id: ch-template
