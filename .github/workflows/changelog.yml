@@ -3,9 +3,16 @@ name: changelog
 
 on:
   workflow_dispatch:
+  schedule:
+  - cron:  "20 23 * * *"
   push:
     tags:
     - 'v*'
+    branches:
+    - main
+    paths-ignore:
+    - "README.md"
+    - "CHANGELOG.md"
 
 env:
   BRANCH: main
@@ -81,7 +88,7 @@ jobs:
       name: create pull request
       uses: peter-evans/create-pull-request@v3
       id: cpr
-      if: ${{ steps.changelog.outputs.changes }}
+      if: ${{ steps.ch.outputs.changes }}
       with:
         branch: docs/changelog
         base: ${{ github.head_ref }}
