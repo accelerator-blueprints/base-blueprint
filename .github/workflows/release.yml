@@ -52,6 +52,11 @@ jobs:
     if: ${{ needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
 
     steps:
+    - uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: '2'
+        submodules: 'true'
+
     - uses: cschleiden/replace-tokens@v1
       with:
         files: '[".github/release-drafter.yml"]'
