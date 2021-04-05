@@ -28,7 +28,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         skip-version-file: true
-        skip-commit: true
+        skip-commit: false
         release-count: 0
 
     - name: read 'templates/changelog'
