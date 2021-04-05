@@ -5,13 +5,13 @@ on:
   schedule:
   - cron:  "10 23 * * *"
   workflow_dispatch:
-  push:
-    branches:
-    - main
-    paths-ignore:
-    - "README.md"
-    - "CHANGELOG.md"
-    - "renovate.json"
+  # push:
+  #   branches:
+  #   - main
+  #   paths-ignore:
+  #   - "README.md"
+  #   - "CHANGELOG.md"
+  #   - "renovate.json"
 
 # consider on pull_request with label 'release'
 

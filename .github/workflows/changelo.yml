@@ -64,7 +64,8 @@ jobs:
         changed_files=$(git status --porcelain --untracked-files=all | wc -l)
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date)
-        echo ::set-output
+        echo ::set-output name=tag::${{ steps.ch.outputs.tag }}
+        echo ::set-output name=skipped::${{ steps.ch.outputs.skipped }}
       shell: bash
 
     -
@@ -76,7 +77,7 @@ jobs:
       with:
         # branch: docs/changelog
         # base: ${{ github.head_ref }}
-        # delete-branch: true
+        delete-branch: true
         # labels: |
         #   kind/docs
         #   :memo: documentation
@@ -86,10 +87,10 @@ jobs:
         #   :robot: bot
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
-        # title: |
-        #   "docs: update changelog "${{ steps.ch.outputs.tag }} #${{ github.run_number }}" '
-        # commit-message: |
-        #   'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
+        title: |
+          "docs: update changelog "${{ steps.ch.outputs.tag }} #${{ github.run_number }}" '
+        commit-message: |
+          'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
         # body: |
         #   ## Description
 
