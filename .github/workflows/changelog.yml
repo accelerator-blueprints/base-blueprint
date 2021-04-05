@@ -30,23 +30,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         # output: CHANGELOG.md
-        headerLabel: "# 📑 Changelog"
-        breakingLabel: '### 💥 Breaking'
-        enhancementLabel: '### 🚀 Enhancements'
-        bugsLabel: '### 🐛 Bug fixes'
-        deprecatedLabel: '### ⚠️ Deprecations'
-        removedLabel: '### 🔥 Removals'
-        securityLabel: '### 🛡️ Security'
-        issuesLabel: '### 📁 Other issues'
-        prLabel: '### 📁 Other pull requests'
-        addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["docs"]}}'
-        issues: true
-        issuesWoLabels: true
-        pullRequests: true
-        prWoLabels: true
-        author: true
-        unreleased: true
-        stripGeneratorNotice: true
 
     - name: read 'templates/changelog'
       id: ch-template
@@ -71,6 +54,7 @@ jobs:
       run: |
         changed_files=$(git status --porcelain --untracked-files=all | wc -l)
         echo ::set-output name=count::$changed_files
+        echo ::set-output name=created::$(date)
         echo ::set-output name=created::$(date)
       shell: bash
 
