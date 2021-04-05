@@ -85,7 +85,6 @@ jobs:
         branch: docs/changelog
         base: ${{ github.head_ref }}
         delete-branch: true
-        # labels: 'kind/docs,:memo: documentation,:memo: docs'
         labels: |
           kind/docs
           :memo: documentation
