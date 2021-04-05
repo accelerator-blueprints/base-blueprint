@@ -104,7 +104,7 @@ jobs:
 
           ## Update report workflow
 
-          - Updated with *today's* ${{ steps.diff.outputs.created }}
+          - Updated with *today's* date `${{ steps.diff.outputs.created }}`
           - New Tag: ${{ steps.tag.outputs.new_tag }}
           - Name: ${{ github.workflow }}
           - Run ID: ${{ github.run_id }}
