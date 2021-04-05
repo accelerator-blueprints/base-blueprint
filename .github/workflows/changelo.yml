@@ -30,7 +30,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         skip-version-file: true
-        skip-commit: true
+        skip-commit: false
         release-count: 0
 
     - name: read 'templates/changelog'
@@ -70,14 +70,14 @@ jobs:
 
     -
       name: create pull request
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v3.8.2
       # if: ${{ steps.ch.outputs.skipped == 'true' }}
       # issue: https://github.com/peter-evans/create-pull-request/issues/48
       id: cpr
       with:
         # branch: docs/changelog
         # base: ${{ github.head_ref }}
-        delete-branch: true
+        # delete-branch: true
         # labels: |
         #   kind/docs
         #   :memo: documentation
