@@ -61,3 +61,5 @@ jobs:
         tag: ${{ needs.update-tag.outputs.new_tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OTHER_CHANGES: |
+          test this changes

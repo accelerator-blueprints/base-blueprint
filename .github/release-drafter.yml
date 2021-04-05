@@ -1,2 +1,22 @@
 # Repository to extend settings from
 _extends: .github
+
+template: |
+  <!-- Optional: add a release summary here -->
+  **Disclaimer**: This is an automatically generated changelog draft
+
+  <summary of changes here>
+
+  ## What’s Changed
+
+  $CHANGES
+
+  **Disclaimer**: Generated without PR
+  $OTHER_CHANGES
+
+  ### Contributors
+
+  👏 A big thanks to $CONTRIBUTORS
+
+  The format is based on [Keep a Changelog](http://keepachangelog.com/)
+  and this project adheres to [Semantic Versioning](http://semver.org/).
