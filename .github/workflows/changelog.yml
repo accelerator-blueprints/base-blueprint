@@ -54,7 +54,6 @@ jobs:
         echo ::set-output name=count::$changed_files
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
         echo ::set-output name=changes::${{ steps.changelog.outputs.changes }}
-        echo "$changed_files"
       shell: bash
 
     -
