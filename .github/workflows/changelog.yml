@@ -36,6 +36,18 @@ jobs:
         author: true
         unreleased: true
         futureRelease: true
+        # headerLabel: "# 📑 Changelog"
+        # breakingLabel: '### 💥 Breaking'
+        # enhancementLabel: '### 🚀 Enhancements'
+        # bugsLabel: '### 🐛 Bug fixes'
+        # deprecatedLabel: '### ⚠️ Deprecations'
+        # removedLabel: '### 🔥 Removals'
+        # securityLabel: '### 🛡️ Security'
+        # issuesLabel: '### 📁 Other issues'
+        # prLabel: '### 📁 Other pull requests'
+        issues: true
+        compareLink: true
+
 
     - name: read 'templates/changelog'
       id: ch-template
