@@ -35,6 +35,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         release-count: 0
+        skip-on-empty: false
       env:
         NEW_VERSION: ${{ steps.tag.outputs.new_tag }}
 
