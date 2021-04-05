@@ -3,8 +3,6 @@ name: changelog
 
 on:
   workflow_dispatch:
-  schedule:
-  - cron:  "20 23 * * *"
 
 env:
   BRANCH: main
