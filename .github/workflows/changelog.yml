@@ -23,27 +23,18 @@ jobs:
         submodules: 'true'
 
     # https://github.com/marketplace/actions/tag-changelog
-    - name: Create changelog text
+    - name: create changelog text
       uses: loopwerk/conventional-changelog-action@latest
       id: changelog
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         config_file: .github/tag-changelog-config.js
 
-    - name: Read CHANGELOG.md
+    - name: read changelog.md
       id: readfile
       uses: juliangruber/read-file-action@v1
       with:
         path: CHANGELOG.md
-
-    - name: Check local changes
-      id: git-diff
-      shell: bash
-      run: |
-        changed_files=$(git status --porcelain --untracked-files=no | wc -l)
-        echo '::set-output name=count::'$changed_files
-        echo ${{ steps.changelog.outputs.changes }}
-        echo ${{ steps.changelog.outputs.changes > 0}}
 
     - name: Write to CHANGELOG.md
       uses: DamianReeves/write-file-action@master
@@ -53,8 +44,17 @@ jobs:
         contents: ${{ steps.changelog.outputs.changelog }}${{ steps.readfile.outputs.content }}
         write-mode: overwrite
 
+    - name: check local changes
+      id: git-diff
+      shell: bash
+      run: |
+        changed_files=$(git status --porcelain --untracked-files=no | wc -l)
+        echo '::set-output name=count::'$changed_files''
+        echo ${{ steps.changelog.outputs.changes }}
+        echo ${{ steps.changelog.outputs.changes > 0}}
+
     -
-      name: Create Pull Request
+      name: create pull request
       uses: peter-evans/create-pull-request@v3
       # if: ${{ steps.git-diff.outputs.count > 0 }}
       with:
