@@ -52,6 +52,15 @@ jobs:
     if: ${{ needs.update-tag.outputs.draft && github.ref == 'refs/heads/main' }}
 
     steps:
+    - uses: cschleiden/replace-tokens@v1
+      with:
+        tokenPrefix: '#{'
+        tokenSuffix: '}#'
+        files: '[".github/release-drafter.yml"]'
+      env:
+        OTHER_CHANGES: |
+          test this changes
+
     - uses: release-drafter/release-drafter@v5.15.0
       with:
         publish: ${{ env.TO_PUBLISH }}
@@ -61,5 +70,3 @@ jobs:
         tag: ${{ needs.update-tag.outputs.new_tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        OTHER_CHANGES: |
-          test this changes
