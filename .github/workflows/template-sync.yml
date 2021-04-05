@@ -7,6 +7,8 @@ on:
 
 env:
   TEMPLATE_REPO: accelerator-blueprints/base-blueprint
+  COMMITTER_BOT: GitHub <noreply@github.com>
+  AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
 
 jobs:
   repo-sync:
@@ -14,15 +16,24 @@ jobs:
     if: github.repository != 'accelerator-blueprints/base-blueprint'
     steps:
       # To use this repository's private action, you must check out the repository
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 1
+          fetch-depth: 0
           submodules: 'true'
 
       # https://github.com/marketplace/actions/actions-template-sync
-      - name: actions-template-sync
-        uses: actions/actions-template-sync
+      # - name: actions-template-sync
+      #   uses: actions/actions-template-sync
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     source_repo_path: ${{ env.TEMPLATE_REPO }}
+      # https://github.com/narrowspark/template-sync-action
+      - uses: narrowspark/template-sync-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_repo_path: ${{ env.TEMPLATE_REPO }}
+          git_author_name: ${{ env.COMMITTER_BOT }}
+          git_author_email: ${{ env.AUTHOR_BOT }}
+          template_repository: ${{ env.TEMPLATE_REPO }}
+          ref: refs/heads/master
+
