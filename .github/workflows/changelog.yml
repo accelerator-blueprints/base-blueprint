@@ -9,7 +9,8 @@ on:
 env:
   BRANCH: main
   COMMITTER_BOT: GitHub <noreply@github.com>
-  AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
+  # AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
+  AUTHOR_BOT: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
 
 jobs:
   update-changelog:
@@ -71,9 +72,14 @@ jobs:
         branch: docs/changelog
         base: ${{ github.head_ref }}
         delete-branch: true
-        labels: 'kind/docs,:memo: documentation,:memo: docs'
+        labels: |
+          kind/docs
+          :memo: documentation
+          :memo: docs
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
+        reviewers: ${{ github.repository_owner }}
+        assignees: ${{ github.repository_owner }}
         title: |
           "docs: update changelog "tag:v${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
         commit-message: |
