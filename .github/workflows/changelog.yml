@@ -37,7 +37,7 @@ jobs:
       id: ch-history
       uses: juliangruber/read-file-action@v1
       with:
-        path: .github/changelog.history
+        path: .github/template/changelog.history
 
     - name: read changelog.md
       id: ch-template
