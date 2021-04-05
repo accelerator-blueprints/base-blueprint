@@ -28,9 +28,9 @@ jobs:
       uses: TriPSs/conventional-changelog-action@v3
       id: ch
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        skip-version-file: true
         # config_file: .github/tag-changelog-config.js
-
 
 
     - name: Bump version and push tag
