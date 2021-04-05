@@ -13,7 +13,7 @@ env:
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
-    if: github.repository != 'accelerator-blueprints/base-blueprint'
+    # if: github.repository != 'accelerator-blueprints/base-blueprint'
     steps:
       # To use this repository's private action, you must check out the repository
       - name: checkout
