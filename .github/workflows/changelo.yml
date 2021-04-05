@@ -12,7 +12,7 @@ env:
 jobs:
   update-changelog:
     runs-on: ubuntu-latest
-    name: changelog generator
+    name: changelog-generator
     # if: "!contains(github.event.head_commit.message, 'skip')"
     steps:
     # To use this repository's private action, you must check out the repository
@@ -28,9 +28,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         skip-version-file: 'true'
-        skip-commit: 'true'
         output-file: 'false'
-        skip-on-empty: 'true'
         release-count: 0
 
     - name: read 'templates/changelog'
