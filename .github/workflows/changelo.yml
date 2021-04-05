@@ -75,7 +75,7 @@ jobs:
       # issue: https://github.com/peter-evans/create-pull-request/issues/48
       id: cpr
       with:
-        # branch: docs/changelog
+        branch: docs/changelog
         # base: ${{ github.head_ref }}
         # delete-branch: true
         # labels: |
