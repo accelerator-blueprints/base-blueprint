@@ -28,7 +28,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         release-count: 0
-        output-file: false
+        output-file: true
         skip-version-file: true
         skip-commit: true
         skip-on-empty: false
@@ -38,12 +38,6 @@ jobs:
       uses: juliangruber/read-file-action@v1
       with:
         path: .github/templates/changelog
-
-    # - name: read 'changelog.md'
-    #   id: ch-updated
-    #   uses: juliangruber/read-file-action@v1
-    #   with:
-    #     path: CHANGELOG.md
 
     - name: write to changelog.md
       uses: DamianReeves/write-file-action@master
