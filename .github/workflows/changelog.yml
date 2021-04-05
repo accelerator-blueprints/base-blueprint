@@ -9,8 +9,7 @@ on:
 env:
   BRANCH: main
   COMMITTER_BOT: GitHub <noreply@github.com>
-  # AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
-  AUTHOR_BOT: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+  AUTHOR_BOT: actions-bot <actions-bot@users.noreply.github.com>
 
 jobs:
   update-changelog:
