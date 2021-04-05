@@ -19,18 +19,10 @@ jobs:
     # if: "!contains(github.event.head_commit.message, 'skip')"
     steps:
     # To use this repository's private action, you must check out the repository
-    - name: checkout
+    - name: "📥 Check-out"
       uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 0
-
-    # https://github.com/marketplace/actions/tag-changelog
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.35.0
-      id: tag
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DRY_RUN: true
 
     - name: update changelog
       uses: heinrichreimer/github-changelog-generator-action@v2.1.1
@@ -69,7 +61,7 @@ jobs:
     #       ${{ steps.ch-template.outputs.content }}${{ steps.ch.outputs.changelog }}
     #     write-mode: overwrite
 
-    - name: read file
+    - name: '🖨️ Print changelog to console'
       run: |
         cat CHANGELOG.md
 
@@ -81,11 +73,13 @@ jobs:
         echo ::set-output name=created::$(date)
       shell: bash
 
-
+    #  apply tag
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Update Changelog for tag $
         file_pattern: CHANGELOG.md
+        commit_message: |
+          'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
+
 
 
     # - name: check outputs
