@@ -27,7 +27,7 @@ jobs:
         uses: actions/actions-template-sync
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_repo_path: ${{ env.TEMPLATE_REPO }}/refs/heads/master
+          source_repo_path: accelerator-blueprints/base-blueprint@ref
       # https://github.com/narrowspark/template-sync-action
       # - uses: narrowspark/template-sync-action@v1.0.0-alpha.9
       #   with:
