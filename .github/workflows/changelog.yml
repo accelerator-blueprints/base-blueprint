@@ -3,8 +3,9 @@ name: changelog
 
 on:
   workflow_dispatch:
-  release:
-    types: [published,released]
+  push:
+    tags:
+    - 'v*'
 
 env:
   BRANCH: main
