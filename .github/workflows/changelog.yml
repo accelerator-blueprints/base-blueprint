@@ -54,12 +54,12 @@ jobs:
           ${{ steps.ch-template.outputs.content }}${{ steps.ch.outputs.changelog }}${{ steps.ch-history.outputs.content }}
         write-mode: overwrite
 
-    - name: write to changelog.md
+    - name: write to 'templates/changelog.history'
       uses: DamianReeves/write-file-action@master
       with:
         path: .github/templates/changelog.history
         contents: |
-          ${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
+          ${{ steps.ch.outputs.changelog }}${{ steps.ch-history.outputs.content }}
         write-mode: overwrite
 
     - name: check local changes
