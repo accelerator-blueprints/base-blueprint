@@ -30,22 +30,22 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         output: CHANGELOG.md
-        headerLabel: "# 📑 Changelog"
-        breakingLabel: '### 💥 Breaking'
-        enhancementLabel: '### 🚀 Enhancements'
-        bugsLabel: '### 🐛 Bug fixes'
-        deprecatedLabel: '### ⚠️ Deprecations'
-        removedLabel: '### 🔥 Removals'
-        securityLabel: '### 🛡️ Security'
-        issuesLabel: '### 📁 Other issues'
-        prLabel: '### 📁 Other pull requests'
+        # headerLabel: "# 📑 Changelog"
+        # breakingLabel: '### 💥 Breaking'
+        # enhancementLabel: '### 🚀 Enhancements'
+        # bugsLabel: '### 🐛 Bug fixes'
+        # deprecatedLabel: '### ⚠️ Deprecations'
+        # removedLabel: '### 🔥 Removals'
+        # securityLabel: '### 🛡️ Security'
+        # issuesLabel: '### 📁 Other issues'
+        # prLabel: '### 📁 Other pull requests'
         issues: true
         issuesWoLabels: true
         pullRequests: true
         prWoLabels: true
         author: true
         unreleased: true
-        compareLink: true
+        # compareLink: true
         futureRelease: true
 
     - name: read 'templates/changelog'
