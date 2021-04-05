@@ -55,12 +55,12 @@ jobs:
 
     - name: read file
       run: |
-        cat CHANGELOG.md
+        echo ${{ steps.ch.outputs.skipped }}
 
     -
       name: create pull request
       uses: peter-evans/create-pull-request@v3
-      if: ${{ steps.ch.outputs.skipped == 'true' }}
+      # if: ${{ steps.ch.outputs.skipped == 'true' }}
       id: cpr
       with:
         branch: docs/changelog
