@@ -1,4 +1,0 @@
-# https://github.com/SvanBoxel/delete-merged-branch
-exclude:
-  - gh-pages
-delete_closed_pr: true
