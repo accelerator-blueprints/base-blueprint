@@ -15,11 +15,11 @@ jobs:
     name: changelog-generator
     # if: "!contains(github.event.head_commit.message, 'skip')"
     steps:
-    # To use this repository's private action, you must check out the repository
-    # - name: Checkout
-    #   uses: actions/checkout@v2.3.4
-    #   with:
-    #     fetch-depth: 5
+    To use this repository's private action, you must check out the repository
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
 
     # https://github.com/marketplace/actions/tag-changelog
     - name: create changelog text
