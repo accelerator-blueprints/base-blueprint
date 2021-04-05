@@ -87,10 +87,10 @@ jobs:
         #   :robot: bot
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
-        title: |
-          "docs: update changelog "${{ steps.ch.outputs.tag }} #${{ github.run_number }}" '
-        commit-message: |
-          'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
+        # title: |
+        #   "docs: update changelog "${{ steps.ch.outputs.tag }} #${{ github.run_number }}"'
+        # commit-message: |
+        #   'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
         # body: |
         #   ## Description
 
