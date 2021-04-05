@@ -45,7 +45,7 @@ jobs:
       with:
         path: .github/changelog.template
 
-    - name: Write to CHANGELOG.md
+    - name: write to changelog.md
       uses: DamianReeves/write-file-action@master
       with:
         path: CHANGELOG.md
@@ -83,8 +83,6 @@ jobs:
           :memo: docs
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
-        reviewers: ${{ github.repository_owner }}
-        assignees: ${{ github.repository_owner }}
         title: |
           "docs: update changelog "tag:${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
         commit-message: |
@@ -98,7 +96,7 @@ jobs:
 
           ## Update report workflow
 
-          - Updated with *today's* date
+          - Updated with *today's* ${{ steps.diff.outputs.created }}
           - New Tag: ${{ steps.tag.outputs.new_tag }}
           - Name: ${{ github.workflow }}
           - Run ID: ${{ github.run_id }}
