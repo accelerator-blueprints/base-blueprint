@@ -28,35 +28,35 @@ jobs:
     # https://github.com/marketplace/actions/tag-changelog
     - name: create changelog text
       uses: loopwerk/conventional-changelog-action@latest
-      id: changelog
+      id: ch
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         config_file: .github/tag-changelog-config.js
 
     - name: read changelog.md
-      id: changelog-history
+      id: ch-history
       uses: juliangruber/read-file-action@v1
       with:
         path: .github/changelog.history
 
     - name: read changelog.md
-      id: changelog-template
+      id: ch-template
       uses: juliangruber/read-file-action@v1
       with:
-        path: .github/changelog.template
+        path: .github/templates/changelog
 
     - name: write to changelog.md
       uses: DamianReeves/write-file-action@master
       with:
         path: CHANGELOG.md
         contents: |
-          ${{ steps.changelog-template.outputs.content }}${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
+          ${{ steps.ch-template.outputs.content }}${{ steps.ch.outputs.changelog }}${{ steps.ch-history.outputs.content }}
         write-mode: overwrite
 
     - name: write to changelog.md
       uses: DamianReeves/write-file-action@master
       with:
-        path: .github/changelog.history
+        path: .github/templates/changelog.history
         contents: |
           ${{ steps.changelog.outputs.changelog }}${{ steps.changelog-history.outputs.content }}
         write-mode: overwrite
@@ -95,7 +95,7 @@ jobs:
         committer: ${{ env.COMMITTER_BOT }}
         author: ${{ env.AUTHOR_BOT }}
         title: |
-          "docs: update changelog "tag:${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
+          "docs: update changelog "${{ steps.tag.outputs.tag }} #${{ github.run_number }}" '
         commit-message: |
           'docs: Update CHANGELOG.md "${{ github.workflow }} #${{ github.run_number }}" [skip ci]'
         body: |
@@ -122,12 +122,3 @@ jobs:
       run: |
         echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
         echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
-
-    # - name: Commit and push CHANGELOG.md
-    #   uses: EndBug/add-and-commit@v7
-    #   with:
-    #     add: CHANGELOG.md
-    #     message: "chore: Update CHANGELOG.md [skip ci]"
-    #     branch:  ${{ github.head_ref }}
-        # author_name: github-actions
-        # author_email: 41898282+github-actions[bot]@users.noreply.github.com
