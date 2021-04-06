@@ -24,11 +24,10 @@ jobs:
       with:
         fetch-depth: 5
 
-    - uses: dangoslen/changelog-enforcer@v2
+    - uses: ardalanamini/auto-changelog@v1.1.0
       id: ch
       with:
-        changeLogPath: 'CHANGELOG.md'
-        skipLabels: 'Skip-Changelog'
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     # - uses: fabernovel/github-changelog-generator-action@v1.0.0-alpha02
     #   id: ch
