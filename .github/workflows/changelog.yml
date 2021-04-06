@@ -83,7 +83,7 @@ jobs:
       with:
         path: CHANGELOG.md
         # contents: ${{ steps.ch-template.outputs.content }}
-        contents: ${{ steps.changelog.outputs.body }}
+        contents: ${{ steps.ch.outputs.body }}
         write-mode: overwrite
 
     - name: '🖨️ Print changelog to console'
