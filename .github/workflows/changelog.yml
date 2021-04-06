@@ -24,11 +24,16 @@ jobs:
       with:
         fetch-depth: 5
 
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
     - name: changelog
       id: ch
       uses: Helmisek/conventional-changelog-generator@v1.0.6-release
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        current-tag: ${{ steps.get_version.outputs.VERSION }}
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
       # Or if you have turned on commenting through the config file.
