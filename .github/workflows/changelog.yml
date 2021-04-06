@@ -28,16 +28,15 @@ jobs:
       id: current-tag
       run: |-
         echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-        echo ::set-output name=BASE_VERSION::$(git rev-list --max-parents=0 HEAD)
-        tag=$( git tag -l --merged "$branch" "v*.*.*" --sort=-committerdate | head -n 1 );
-        echo ::set-output name=tag::$tag
+        echo ::set-output name=base::$(git rev-list --max-parents=0 HEAD)
 
     - name: changelog
       id: ch
-      uses: mikepenz/release-changelog-builder-action@v1
+      uses: jimschubert/beast-changelog-action@v1
       with:
-        toTag: ${{ steps.current-tag.outputs.tag }}
-        commitMode: true
+        FROM: ${{ steps.current-tag.outputs.base }}
+        TO: HEAD
+        OUTPUT: ./CHANGELOG.md
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # with:
@@ -85,13 +84,13 @@ jobs:
     #   with:
     #     path: .github/templates/changelog
 
-    - name: write to changelog.md
-      uses: DamianReeves/write-file-action@master
-      with:
-        path: CHANGELOG.md
-        # contents: ${{ steps.ch-template.outputs.content }}
-        contents: ${{ steps.ch.outputs.changelog }}
-        write-mode: overwrite
+    # - name: write to changelog.md
+    #   uses: DamianReeves/write-file-action@master
+    #   with:
+    #     path: CHANGELOG.md
+    #     # contents: ${{ steps.ch-template.outputs.content }}
+    #     contents: ${{ steps.ch.outputs.changelog }}
+    #     write-mode: overwrite
 
     - name: '🖨️ Print changelog to console'
       run: |
