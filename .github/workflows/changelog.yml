@@ -33,10 +33,15 @@ jobs:
 
     - name: changelog
       id: ch
-      uses: dlavrenuek/conventional-changelog-action@v1.1.0
+      uses: mikepenz/release-changelog-builder-action@{latest-release}
       with:
-        from: ${{ steps.current-tag.outputs.base_version }}
-        to: HEAD
+        fromTag: ${{ steps.current-tag.outputs.base_version }}
+        toTag: HEAD
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # with:
+      #   from: ${{ steps.current-tag.outputs.base_version }}
+      #   to: HEAD
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
       # Or if you have turned on commenting through the config file.
@@ -84,7 +89,7 @@ jobs:
       with:
         path: CHANGELOG.md
         # contents: ${{ steps.ch-template.outputs.content }}
-        contents: ${{ steps.ch.outputs.body }}
+        contents: ${{ steps.ch.outputs.changelog }}
         write-mode: overwrite
 
     - name: '🖨️ Print changelog to console'
