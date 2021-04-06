@@ -30,11 +30,13 @@ jobs:
 
     - name: changelog
       id: ch
-      uses: Helmisek/conventional-changelog-generator@v1.0.6-release
+      uses: BobAnkh/auto-generate-changelog@master
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        current-tag: ${{ steps.get_version.outputs.VERSION }}
-        commit-types: "fix:Bug Fixes,feat:Features,refactor:Refactoring"
+        REPO_NAME: 'accelerator-blueprints/base-blueprint'
+        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        PATH: './CHANGELOG.md'
+        COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
+        TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
       # Or if you have turned on commenting through the config file.
