@@ -35,7 +35,7 @@ jobs:
       id: ch
       uses: dlavrenuek/conventional-changelog-action@v1.1.0
       with:
-        from: v0.0.0
+        from: ${{ steps.current-tag.outputs.base_version }}
         to: HEAD
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
