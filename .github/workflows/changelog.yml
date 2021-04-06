@@ -25,18 +25,17 @@ jobs:
         fetch-depth: 5
 
     - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      id: current-tag
+      run: |-
+        echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+        echo ::set-output name=BASE_VERSION::$(git rev-list HEAD | tail -n 1)
 
     - name: changelog
       id: ch
-      uses: BobAnkh/auto-generate-changelog@master
+      uses: dlavrenuek/conventional-changelog-action@v1.1.0
       with:
-        REPO_NAME: 'accelerator-blueprints/base-blueprint'
-        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        PATH: './CHANGELOG.md'
-        COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
-        TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
+        from: ${{ steps.current-tag.outputs.BASE_VERSION }}
+        to: HEAD
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
       # Or if you have turned on commenting through the config file.
