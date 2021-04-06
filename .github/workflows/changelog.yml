@@ -24,43 +24,46 @@ jobs:
       with:
         fetch-depth: 5
 
-    - name: "✏️ Generate full changelog"
+    - uses: vemel/update-changelog@0.0.1
       id: ch
-      uses: heinrichreimer/github-changelog-generator-action@v2.1.1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        output: CHANGELOG.md
-        issuesWoLabels: true
-        pullRequests: true
-        prWoLabels: true
-        author: true
-        unreleased: true
-        futureRelease: true
-        # headerLabel: "# 📑 Changelog"
-        # breakingLabel: '### 💥 Breaking'
-        # enhancementLabel: '### 🚀 Enhancements'
-        # bugsLabel: '### 🐛 Bug fixes'
-        # deprecatedLabel: '### ⚠️ Deprecations'
-        # removedLabel: '### 🔥 Removals'
-        # securityLabel: '### 🛡️ Security'
-        # issuesLabel: '### 📁 Other issues'
-        # prLabel: '### 📁 Other pull requests'
-        issues: true
-        compareLink: true
+
+    # - name: "✏️ Generate full changelog"
+    #   id: ch
+    #   uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+    #   with:
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     output: CHANGELOG.md
+    #     issuesWoLabels: true
+    #     pullRequests: true
+    #     prWoLabels: true
+    #     author: true
+    #     unreleased: true
+    #     futureRelease: true
+    #     # headerLabel: "# 📑 Changelog"
+    #     # breakingLabel: '### 💥 Breaking'
+    #     # enhancementLabel: '### 🚀 Enhancements'
+    #     # bugsLabel: '### 🐛 Bug fixes'
+    #     # deprecatedLabel: '### ⚠️ Deprecations'
+    #     # removedLabel: '### 🔥 Removals'
+    #     # securityLabel: '### 🛡️ Security'
+    #     # issuesLabel: '### 📁 Other issues'
+    #     # prLabel: '### 📁 Other pull requests'
+    #     issues: true
+    #     compareLink: true
 
 
-    - name: read 'templates/changelog'
-      id: ch-template
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: .github/templates/changelog
+    # - name: read 'templates/changelog'
+    #   id: ch-template
+    #   uses: juliangruber/read-file-action@v1
+    #   with:
+    #     path: .github/templates/changelog
 
-    - name: write to changelog.md
-      uses: DamianReeves/write-file-action@master
-      with:
-        path: CHANGELOG.md
-        contents: ${{ steps.ch-template.outputs.content }}
-        write-mode: append
+    # - name: write to changelog.md
+    #   uses: DamianReeves/write-file-action@master
+    #   with:
+    #     path: CHANGELOG.md
+    #     contents: ${{ steps.ch-template.outputs.content }}
+    #     write-mode: append
 
     - name: '🖨️ Print changelog to console'
       run: |

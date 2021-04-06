@@ -26,3 +26,4 @@
 [url-links-checker]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/markdown-links-checker.yml
 
 
+https://github.com/search?o=desc&q=vemel%2Fupdate-changelog+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code
