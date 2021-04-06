@@ -24,9 +24,11 @@ jobs:
       with:
         fetch-depth: 5
 
-    - uses: vemel/update-changelog@0.0.1
+    - uses: fabernovel/github-changelog-generator-action@v1
       id: ch
-
+      with:
+        # You can pass any parameters from https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-option
+        options: --token ${{ secrets.GITHUB_TOKEN }}
     # - name: "✏️ Generate full changelog"
     #   id: ch
     #   uses: heinrichreimer/github-changelog-generator-action@v2.1.1
