@@ -22,13 +22,14 @@ jobs:
     - name: "📥 Check-out"
       uses: actions/checkout@v2
       with:
-        fetch-depth: 5
+        fetch-depth: 0
 
     - name: Get the version
       id: current-tag
       run: |-
         echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-        echo ::set-output name=BASE_VERSION::$(git rev-list HEAD | tail -n 1)
+        echo ::set-output name=BASE_VERSION::$(git rev-list --max-parents=0 HEAD)
+        echo $(git rev-list --max-parents=0 HEAD)
 
     - name: changelog
       id: ch
