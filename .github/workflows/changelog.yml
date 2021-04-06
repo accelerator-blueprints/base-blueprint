@@ -24,10 +24,10 @@ jobs:
       with:
         fetch-depth: 5
 
-    - name: Run Changelog CI
-      uses: ahmadawais/action-auto-changelog@v1
+    - name: changelog
+      uses: jaywcjlove/changelog-generator@main
       with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
+        token: ${{ secrets.GITHUB_TOKEN }}
         # config_file: changelog-ci-config.json
       # Add this if you are using it on a private repository
       # Or if you have turned on commenting through the config file.
