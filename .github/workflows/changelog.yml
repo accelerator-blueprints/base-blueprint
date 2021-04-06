@@ -29,14 +29,14 @@ jobs:
       run: |-
         echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
         echo ::set-output name=BASE_VERSION::$(git rev-list --max-parents=0 HEAD)
-        echo $(git rev-list --max-parents=0 HEAD)
+        tag=$( git tag -l --merged "$branch" "v*.*.*" --sort=-committerdate | head -n 1 );
+        echo ::set-output name=tag::$tag
 
     - name: changelog
       id: ch
       uses: mikepenz/release-changelog-builder-action@v1
       with:
-        fromTag: ${{ steps.current-tag.outputs.base_version }}
-        toTag: HEAD
+        toTag: ${{ steps.current-tag.outputs.tag }}
         commitMode: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
