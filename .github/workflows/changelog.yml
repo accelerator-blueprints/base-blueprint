@@ -33,7 +33,7 @@ jobs:
 
     - name: changelog
       id: ch
-      uses: mikepenz/release-changelog-builder-action@{latest-release}
+      uses: mikepenz/release-changelog-builder-action@master
       with:
         fromTag: ${{ steps.current-tag.outputs.base_version }}
         toTag: HEAD
