@@ -24,11 +24,17 @@ jobs:
       with:
         fetch-depth: 5
 
-    - uses: fabernovel/github-changelog-generator-action@v1.0.0-alpha02
+    - uses: dangoslen/changelog-enforcer@v2
       id: ch
       with:
-        # You can pass any parameters from https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-option
-        options: --token ${{ secrets.GITHUB_TOKEN }}
+        changeLogPath: 'CHANGELOG.md'
+        skipLabels: 'Skip-Changelog'
+
+    # - uses: fabernovel/github-changelog-generator-action@v1.0.0-alpha02
+    #   id: ch
+    #   with:
+    #     # You can pass any parameters from https://github.com/github-changelog-generator/github-changelog-generator/wiki/Advanced-change-log-generation-examples#additional-option
+    #     options: --token ${{ secrets.GITHUB_TOKEN }}
     # - name: "✏️ Generate full changelog"
     #   id: ch
     #   uses: heinrichreimer/github-changelog-generator-action@v2.1.1
