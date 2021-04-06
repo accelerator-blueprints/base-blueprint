@@ -25,7 +25,7 @@ jobs:
         fetch-depth: 5
 
     - name: Run Changelog CI
-      uses: ahmadawais/action-auto-changelog@master
+      uses: ahmadawais/action-auto-changelog@v1
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
         # config_file: changelog-ci-config.json
