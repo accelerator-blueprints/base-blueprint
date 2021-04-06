@@ -37,6 +37,7 @@ jobs:
       with:
         fromTag: ${{ steps.current-tag.outputs.base_version }}
         toTag: HEAD
+        commitMode: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # with:
