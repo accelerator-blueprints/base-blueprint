@@ -29,6 +29,3 @@
 [url-changelog]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/changelog.yml
 [badge-links-checker]: https://github.com/accelerator-blueprints/base-blueprint/workflows/check-markdown-links/badge.svg
 [url-links-checker]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/markdown-links-checker.yml
-
-
-https://github.com/search?o=desc&q=vemel%2Fupdate-changelog+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code
